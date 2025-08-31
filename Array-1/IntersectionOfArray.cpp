@@ -23,7 +23,7 @@
 
 
 #include <iostream>
-#include <unordered_set>  // unordered_set?
+#include <unordered_set>  // unordered_set? (Stores only unique keys (no duplicates).
 
 // It’s a C++ STL container that stores unique elements only.
 

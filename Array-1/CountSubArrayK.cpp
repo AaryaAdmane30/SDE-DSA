@@ -41,7 +41,7 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_map> // to store the preffix sum how many times that apperaed 
+#include <unordered_map>  // (stored keyvalue pair )// to store the preffix sum how many times that apperaed 
 unordered_set?
 
 // It’s a C++ STL container that stores unique elements only.
@@ -54,7 +54,7 @@ unordered_set?
 using namespace std;
 
 int countSubarraysWithSumK(vector<int>& arr, int k) {
-    unordered_map<int,int> prefixCount; // to store the preffix count  how many times that apperaed 
+    unordered_map<int,int> prefixCount; // int is key and int is value (pair) // to store the preffix count  how many times that apperaed 
     prefixCount[0] = 1; // base case: sum 0 exists once
     
     int sum = 0, count = 0;
