@@ -49,6 +49,16 @@ using namespace std;
 
 vector<int> findDuplicate(vector<int>& arr) {
     unordered_map<int,int> freq;  // store frequency of numbers like 1 appeared 1 time {1:1}
+
+
+// It’s a C++ STL container that stores unique elements only.
+
+// No duplicates allowed.
+
+// Internally, it’s implemented using a hash table, so operations like insert, find, erase are O(1) average.
+
+
+
     vector<int> duplicates;       // store duplicates found if 2 appeared 2 times then {2:2}
 
     // count frequencies

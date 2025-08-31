@@ -42,6 +42,15 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map> // to store the preffix sum how many times that apperaed 
+unordered_set?
+
+// It’s a C++ STL container that stores unique elements only.
+
+// No duplicates allowed.
+
+// Internally, it’s implemented using a hash table, so operations like insert, find, erase are O(1) average.
+
+// “Unordered” means elements are not stored in any particular order.
 using namespace std;
 
 int countSubarraysWithSumK(vector<int>& arr, int k) {
