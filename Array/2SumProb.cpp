@@ -51,7 +51,7 @@ int main () {
    
     if (!ans.empty()) {
         cout << "The Two Sum indices are: " << ans[0] << " and " << ans[1] << endl;
-        cout << "Values are: " << nums[ans[0]] << " + " << nums[ans[1]] << " = " << target << endl;
+        cout << "Values are: " << nums[ans[0]] << " + " << nums[ans[1]] << " = " << target << endl; 
     } else {
         cout << "No solution found!" << endl;
     }
