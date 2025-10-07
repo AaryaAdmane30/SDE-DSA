@@ -1,89 +1,33 @@
-// Find duplicate numbers in an array containing multiple
-//  duplicates.
 
-
-// Input: arr = [1, 3, 4, 2, 2, 3, 5, 1]
-// Output: All duplicates → [1, 2, 3]
-
-
-// We count every number first
-
-// Then pick the numbers that appeared more than once
-
-// Hashmap makes counting fast (O(1)) for each number
-
-// Total time = O(n)
-
-// Count frequencies
-
-// Push only numbers that appear > 1
-
-// Return vector of duplicates
-
-
-// Take 1 → not in map → add 1: {1:1}
-
-// Take 3 → {1:1, 3:1}
-
-// Take 4 → {1:1, 3:1, 4:1}
-
-// Take 2 → {1:1,3:1,4:1,2:1}
-
-// Take 2 → already in map → increase count → {1:1,3:1,4:1,2:2}
-
-// Take 3 → {1:1,3:2,4:1,2:2}
-
-// Take 5 → {1:1,3:2,4:1,2:2,5:1}
-
-// Take 1 → {1:2,3:2,4:1,2:2,5:1}
-
-
-// Hashmap makes counting fast (O(1)) for each number
-
-// Total time = O(n)
 
 #include <iostream>
-#include <vector>
-#include <unordered_map>
 using namespace std;
 
-vector<int> findDuplicate(vector<int>& arr) {
-    unordered_map<int,int> freq;  // store frequency of numbers like 1 appeared 1 time {1:1}
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
 
+    int arr[n];
+    cout << "Enter array elements: ";
+    for(int i = 0; i < n; i++)
+        cin >> arr[i];
 
-// It’s a C++ STL container that stores unique elements only.
+    cout << "Duplicate elements: ";
+    bool found = false;
 
-// No duplicates allowed.
-
-// Internally, it’s implemented using a hash table, so operations like insert, find, erase are O(1) average.
-
-
-
-    vector<int> duplicates;       // store duplicates found if 2 appeared 2 times then {2:2}
-
-    // count frequencies
-    for (int num : arr) {
-        freq[num]++;
-    }
-
-    // check which numbers appeared more than once
-    for (auto it : freq) {
-        if (it.second > 1) { // 2 >1 duplicate => {2:2}
-            duplicates.push_back(it.first);
+    for(int i = 0; i < n; i++) {
+        for(int j = i + 1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                cout << arr[i] << " ";
+                found = true;
+                break; // avoid printing same element multiple times
+            }
         }
     }
 
-    return duplicates;  // return after finishing the loop
-}
+    if(!found) cout << "None";
 
-int main () {
-    vector<int> arr = {1,2,3,4,5,2,1,5,8,2,8,4};
-
-    vector<int> duplicate = findDuplicate(arr);
-
-    cout << "Duplicates: ";
-    for (int num : duplicate) cout << num << " ";
     cout << endl;
-
     return 0;
 }
