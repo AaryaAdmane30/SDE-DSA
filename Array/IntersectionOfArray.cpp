@@ -1,74 +1,46 @@
-// intersection means → the common elements present in both arrays.
-// Example:
-
-// arr1 = [1,2,3,4,5]  
-// arr2 = [3,4,5,6,7]  
-
-// Intersection = [3,4,5]
-
-
-
-//  Approach :
-
-
-// Use a set or unordered_set.
-
-// Store elements of arr1 in a set.
-
-// Traverse arr2 and check which are present in the set.
-
-// Time = O(n + m)  // traverse arr1 and arr2 at 0(n) and  o(m) = O(n + m)
-
-// Space = O(n)
-
-
 #include <iostream>
-#include <unordered_set>  // unordered_set? (Stores only unique keys (no duplicates).
-
-// It’s a C++ STL container that stores unique elements only.
-
-// No duplicates allowed.
-
-// Internally, it’s implemented using a hash table, so operations like insert, find, erase are O(1) average.
-
-// “Unordered” means elements are not stored in any particular order.
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 
 
-vector<int> intersectionOfTwoArray(vector<int>& arr1 , vector<int>& arr2){
-    unordered_set<int> set(arr1.begin() ,arr1.end()); // put all the element of arr1 in SET
+// arr1 = {1, 2, 2, 3}
+// arr2 = {2, 2, 4}
+
+// Output : {2, 2}
+
+vector <int> intersetionOfArrat(vector<int> &arr1 , vector<int> &arr2) {
+    unordered_map<int,int> freq ; //map to store frequency count of the array elements 
+
+    vector<int> result ; //to store the result 
 
 
+     for(int num : arr1){ // go through the loop for arr1
+        freq[num]++ ; // increase the frequency count move  1 ++
+     }
 
-    // 🪄✨✨✨✨✨  A set automatically removes duplicates — if you insert the same element multiple times, it still keeps only one copy.
-    unordered_set<int>  resSet ; // to avoid duplications 
-
-
-    for(int num2 : arr2){
-        if(set.find(num2) != set.end()) { // find if the arr2 exists in the arr1 of the set 
-
-        resSet.insert(num2); //add it to the result  .. put the arr2 element in results 
+     for( int num : arr2){
+        if(freq[num] > 0){  // if the frequency is greater and exits }
+            result.push_back(num); // at the freq count to the result 
+            freq[num]--; // dec the freq count by 1 to avoid dupliications
+     }
     }
-
-
+    return result;
 }
 
-// /Convert set to vector
-vector<int> result(resSet.begin() , resSet.end());
-return result;
+int main() {
+    vector<int> arr1 = {1,2,2,3,4,4,5};
+     vector<int> arr2 = {2,3,4,5,6};
 
+     vector<int>result = intersetionOfArrat(arr1,arr2);
 
-}
-int main () {
+     for(int ans : result){
+        cout << " The Intersection of two array is :"<< ans << " ";
+        cout << endl;
+        
+     }
 
-    vector<int> arr1 = {1,2,2,3,4};
-    vector<int> arr2 = {1,2,3,4,5,6};
+     return 0;
 
-
-    vector<int> ans = intersectionOfTwoArray(arr1,arr2);
-
-    for( int x : ans) cout << "The intersection of Two Array is:"<< x << endl;
-    return 0;
 }
