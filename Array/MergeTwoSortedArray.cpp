@@ -1,6 +1,6 @@
 
 
-//  ✨✨✨This keeps the merged array sorted automatically.
+//  
 
 
 //  ✨Time: O(n + m) → every element is visited exactly once
@@ -20,65 +20,58 @@
     //  Two-Pointer Method  :
 
 
-// Initialize two pointers i = 0 (for arr1) and j = 0 (for arr2).
-
-// Compare arr1[i] and arr2[j]:
-
-// If arr1[i] < arr2[j], add arr1[i] to the merged array and i++.
-
-// Else, add arr2[j] to the merged array and j++.
-
-// If one array ends, append the remaining elements of the other array.
-
 
 #include <iostream>
 #include<vector>
 using namespace std;
 
+vector<int> mergeSortedArrays(vector<int> &arr1 , vector<int> &arr2){
 
-vector<int> mergeTwoSortedArray(vector<int>& arr1 , vector<int>& arr2){
-    int i = 0 , j =0;
-     vector<int> merged;
+    vector<int>merge;
+
+    int i = 0 , j = 0;
 
 
-while( i < arr1.size() && j < arr2.size()){
-    if(arr1[i] < arr2[j]) {
-        merged.push_back(arr1[i]);
-        i ++ ;
+    //  i is the first array 1 and ... j is the sceond array pointer 
 
-    }else {
-        merged.push_back(arr2[j]);
-        j++ ;
+    while( i < arr1.size() && j < arr2.size()){
+        if(arr1[i] < arr2[j]){
+            merge.push_back(arr1[i]);
+            i++;
+        } else {
+            merge.push_back(arr2[j]);
+            j++;
+        }
     }
+
+    //  push the remaining elements of the arrays :
+
+    while ( i < arr1.size()){
+        merge.push_back(arr1[i]);
+        i++;
+    }
+    
+   while ( j < arr2.size()){
+        merge.push_back(arr2[j]);
+        j++;
+    }
+ return merge;
 }
 
-// Append all the remaining array :
+int main (){
 
-while( i < arr1.size() ) merged.push_back(arr1[i++]);
-while( j < arr2.size()) merged.push_back(arr2[j++]);
+    vector<int> arr1 = {1,3,4,5};
+    vector<int> arr2 = {2,6,7,8};
 
-
-return merged;
-}
+    vector<int> merge = mergeSortedArrays(arr1, arr2);
 
 
-
-int main() {
-
-    vector<int> arr1 = {1,2,3,6,9,7};
-    vector<int> arr2 = {3,4,5,8,10};
-
-    //  Output - 1 2 3 3 4 5 6 8 9 7 10 
-
-
-    vector<int> merged = mergeTwoSortedArray(arr1, arr2);
-
-    for(int ans: merged) cout << ans << " ";
+    cout << "Merged Arrays are :";
+    for (int num : merge){
+        cout << num << " ";
+    }
     return 0;
 }
-
-
-
 
 
 
