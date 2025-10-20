@@ -39,7 +39,7 @@ vector<int> mergeSortedArrays(vector<int> &arr1 , vector<int> &arr2){
             merge.push_back(arr1[i]);
             i++;
         } else {
-            merge.push_back(arr2[j]);
+            merge.push_back(arr2[j]    );
             j++;
         }
     }
